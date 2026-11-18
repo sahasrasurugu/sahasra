@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sahasra | Personal Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --purple: #8064c9;
+            --dark: #28223b;
+            --light: #f5f1ff;
+            --white: #ffffff;
+            --text: #625c70;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fcfbff;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            background: rgba(255,255,255,0.95);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px #00000008;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: var(--purple);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--purple);
+        }
+
+        /* COMMON */
+
+        section {
+            padding: 85px 10%;
+            scroll-margin-top: 65px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--text);
+            margin-bottom: 30px;
+        }
+
+        /* HOME */
+
+        .home {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background: linear-gradient(
+                120deg, #fcfbff, #eee7ff
+            );
+        }
+
+        .home-content {
+            max-width: 600px;
+        }
+
+        .welcome {
+            color: var(--purple);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .home h1 {
+            font-size: clamp(38px, 6vw, 60px);
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .purple {
+            color: var(--purple);
+        }
+
+        .home h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .home p {
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--purple);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 8px 8px 0 0;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #6246aa;
+            transform: translateY(-3px);
+        }
+
+        .button-outline {
+            background: transparent;
+            color: var(--purple);
+            border: 1px solid var(--purple);
+        }
+
+        .button-outline:hover {
+            color: white;
+        }
+
+        .avatar {
+            width: 250px;
+            height: 250px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: linear-gradient(
+                135deg, #a98ee8, #7050b5
+            );
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 85px;
+            font-weight: bold;
+            box-shadow: 0 15px 40px #8064c955;
+            border: 10px solid white;
+        }
+
+        /* CARDS */
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px #4a347310;
+            margin-top: 18px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card p {
+            color: var(--text);
+        }
+
+        .education {
+            border-left: 5px solid var(--purple);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .skill {
+            background: var(--light);
+            color: #6044a5;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project-card h3 {
+            color: var(--purple);
+            margin-bottom: 10px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: var(--light);
+            padding: 5px 12px;
+            border-radius: 15px;
+            color: var(--purple);
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        /* CONTACT */
+
+        .contact-box {
+            text-align: center;
+            background: var(--light);
+            border-radius: 18px;
+            padding: 40px 20px;
+        }
+
+        .contact-box p {
+            color: var(--text);
+            margin: 12px 0;
+        }
+
+        footer {
+            text-align: center;
+            background: white;
+            padding: 22px;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px 5%;
+            }
+
+            nav {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            section {
+                padding: 60px 7%;
+            }
+
+            .home {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .avatar {
+                width: 165px;
+                height: 165px;
+                font-size: 58px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+    <div class="logo">Sahasra.</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+
+<!-- HOME -->
+
+<section class="home" id="home">
+
+    <div class="home-content">
+
+        <span class="welcome">WELCOME TO MY PORTFOLIO</span>
+
+        <h1>
+            Hello, I'm <span class="purple">Sahasra</span>
+        </h1>
+
+        <h3>B.Tech Computer Science Student</h3>
+        <p>Aspiring Software Developer</p>
+
+        <p>
+            A passionate learner exploring technology,
+            programming and creative ideas.
+            I believe in learning something new every day
+            and growing step by step.
+        </p>
+
+        <a href="#projects" class="button">
+            View My Projects
+        </a>
+
+        <a href="#contact" class="button button-outline">
+            Contact Me
+        </a>
+
+    </div>
+
+    <div class="avatar">SS</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <h2 class="section-title">About Me</h2>
+
+    <p class="section-subtitle">
+        Get to know me
+    </p>
+
+    <div class="card">
+
+        <p>
+            Hi! I'm Sahasra, a first-year B.Tech
+            Computer Science and Engineering student
+            at KL University.
+
+            I am passionate about learning programming,
+            exploring new technologies and improving
+            my technical and communication skills.
+
+            My hobbies include reading books, dancing
+            and listening to music.
+
+            My career goal is to become a Software
+            Developer and build useful applications
+            through technology.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+    <h2 class="section-title">Education</h2>
+
+    <p class="section-subtitle">
+        My academic journey
+    </p>
+
+    <div class="card education">
+
+        <h3>Bachelor of Technology</h3>
+
+        <p>Computer Science and Engineering</p>
+
+        <p>KL University</p>
+
+        <p>First Year</p>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <h2 class="section-title">My Skills</h2>
+
+    <p class="section-subtitle">
+        Technologies and skills I am learning
+    </p>
+
+    <div class="card">
+
+        <div class="skills-list">
+
+            <span class="skill">Java</span>
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">Communication</span>
+            <span class="skill">Teamwork</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <h2 class="section-title">My Projects</h2>
+
+    <p class="section-subtitle">
+        Things I have created and learned
+    </p>
+
+    <div class="project-grid">
+
+        <div class="card project-card">
+
+            <h3>Personal Portfolio Website</h3>
+
+            <p>
+                My personal website built using
+                HTML and CSS to showcase my
+                introduction, education and skills.
+            </p>
+
+            <span class="project-tag">HTML • CSS</span>
+
+        </div>
+
+        <div class="card project-card">
+
+            <h3>Java Practice Programs</h3>
+
+            <p>
+                A collection of beginner Java
+                programs created while learning
+                programming fundamentals.
+            </p>
+
+            <span class="project-tag">Java</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <h2 class="section-title">Contact Me</h2>
+
+    <div class="contact-box">
+
+        <h2>Let's Connect!</h2>
+
+        <p>
+            Feel free to connect with me
+            for learning and collaboration.
+        </p>
+
+        <p>
+            Email:
+            <a href="mailto:sahasrasurugu@gmail.com">
+                sahasrasurugu@gmail.com
+            </a>
+        </p>
+
+        <p>
+            LinkedIn:
+            <a href="https://www.linkedin.com/in/sahasra-surugu-a19bb1398"
+               target="_blank">
+                Visit My LinkedIn
+            </a>
+        </p>
+
+        <p>
+            GitHub:
+            <a href="https://github.com/sahasrasurugu"
+               target="_blank">
+                Visit My GitHub
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>© 2026 Sahasra. All Rights Reserved.</p>
+
+    <p>Designed and created by Sahasra.</p>
+
+</footer>
+
+</body>
+</html>
